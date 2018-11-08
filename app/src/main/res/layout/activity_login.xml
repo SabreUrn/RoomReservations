@@ -24,15 +24,13 @@
 		android:inputType="textPassword"
 	/>
 
-	<!--
 	<CheckBox
-		android:id="@+id/login_remember_CheckBox"
+		android:id="@+id/login_remember_Checkbox"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:checked="true"
 		android:hint="Remember"
 	/>
-	-->
 
 	<Button
 		android:layout_width="match_parent"

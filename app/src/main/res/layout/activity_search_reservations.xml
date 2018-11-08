@@ -13,11 +13,16 @@
 		android:layout_height="wrap_content"
 		android:hint="Room ID" />
 
-	<EditText
-		android:id="@+id/search_date_EditText"
-		android:layout_width="match_parent"
+	<Button
+		android:id="@+id/search_date_Button"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:hint="Date" />
+		android:onClick="setDate"
+		android:text="Select date"/>
+	<TextView
+		android:id="@+id/search_date_TextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
 
 	<Button
 		android:layout_width="match_parent"

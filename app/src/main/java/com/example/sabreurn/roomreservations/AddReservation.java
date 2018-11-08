@@ -139,15 +139,17 @@ public class AddReservation extends AppCompatActivity {
 			@Override
 			public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 				Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
-//				setFromDate(cal);
 
 				final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
 				((TextView)findViewById(R.id.addReservation_fromDate_TextView)).setText(dateFormat.format(cal.getTime()));
 				fromDateYearString = "" + cal.get(Calendar.YEAR);
+
 				int fromDateMonth = cal.get(Calendar.MONTH) + 1; //lmao 0-based
 				fromDateMonthString = fromDateMonth < 10 ? "0" + fromDateMonth : "" + fromDateMonth;
+
 				int fromDateDay = cal.get(Calendar.DAY_OF_MONTH);
 				fromDateDayString = fromDateDay < 10 ? "0" + fromDateDay : "" + fromDateDay;
+
 				Log.w("SETDATEFROM", fromDateYearString);
 				Log.w("SETDATEFROM", fromDateMonthString);
 				Log.w("SETDATEFROM", fromDateDayString);
@@ -158,19 +160,6 @@ public class AddReservation extends AppCompatActivity {
 		dateFragment.setCallback(fromDateListener);
 		dateFragment.show(getSupportFragmentManager(), "datefrom");
 	}
-
-//	private void setFromDate(final Calendar cal) {
-//		final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-//		((TextView)findViewById(R.id.addReservation_fromDate_TextView)).setText(dateFormat.format(cal.getTime()));
-//		fromDateYearString = "" + cal.get(Calendar.YEAR);
-//		int fromDateMonth = cal.get(Calendar.MONTH) + 1; //lmao 0-based
-//		fromDateMonthString = fromDateMonth < 10 ? "0" + fromDateMonth : "" + fromDateMonth;
-//		int fromDateDay = cal.get(Calendar.DAY_OF_MONTH);
-//		fromDateDayString = fromDateDay < 10 ? "0" + fromDateDay : "" + fromDateDay;
-//		Log.w("SETDATEFROM", fromDateYearString);
-//		Log.w("SETDATEFROM", fromDateMonthString);
-//		Log.w("SETDATEFROM", fromDateDayString);
-//	}
 
 	public void setTimeFrom(View view) {
 		fromTimeListener = new OnTimeSetListener() {
@@ -194,7 +183,6 @@ public class AddReservation extends AppCompatActivity {
 			@Override
 			public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 				Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
-//				setToDate(cal);
 
 				final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
 				((TextView)findViewById(R.id.addReservation_toDate_TextView)).setText(dateFormat.format(cal.getTime()));
@@ -213,19 +201,6 @@ public class AddReservation extends AppCompatActivity {
 		dateFragment.setCallback(toDateListener);
 		dateFragment.show(getSupportFragmentManager(), "dateto");
 	}
-
-//	private void setToDate(final Calendar cal) {
-//		final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-//		((TextView)findViewById(R.id.addReservation_fromTime_TextView)).setText(dateFormat.format(cal.getTime()));
-//		toDateYearString = "" + cal.get(Calendar.YEAR);
-//		int toDateMonth = cal.get(Calendar.MONTH) + 1;
-//		toDateMonthString = toDateMonth < 10 ? "0" + toDateMonth : "" + toDateMonth;
-//		int toDateDay = cal.get(Calendar.DAY_OF_MONTH);
-//		toDateDayString = toDateDay < 10 ? "0" + toDateDay : "" + toDateDay;
-//		Log.w("SETDATETO", toDateYearString);
-//		Log.w("SETDATETO", toDateMonthString);
-//		Log.w("SETDATETO", toDateDayString);
-//	}
 
 	public void setTimeTo(View view) {
 		toTimeListener = new OnTimeSetListener() {

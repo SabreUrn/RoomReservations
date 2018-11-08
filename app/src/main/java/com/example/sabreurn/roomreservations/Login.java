@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
-//	public static final String PREF_FILE_NAME = "logiPref";
+	public static final String PREF_FILE_NAME = "loginPref";
 	public static final String EMAIL = "EMAIL";
 	public static final String PASSWORD = "PASSWORD";
 	private SharedPreferences preferences;
@@ -37,57 +37,61 @@ public class Login extends AppCompatActivity {
 		mAuth = FirebaseAuth.getInstance();
 
 		//sets username and password from preferences if they exist
-//		preferences = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
-//		String username = preferences.getString(USERNAME, null);
-//		String password = preferences.getString(PASSWORD, null);
-//		if(username != null && password != null) {
-//			usernameField.setText(username);
-//			passwordField.setText(password);
-//		}
+		preferences = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
+		String email = preferences.getString(EMAIL, null);
+		String password = preferences.getString(PASSWORD, null);
+		if(email != null && password != null) {
+			emailField.setText(email);
+			passwordField.setText(password);
+			login();
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		Intent refresh = new Intent(this, Login.class);
+		startActivity(refresh);
+		this.finish();
 	}
 
 	public void loginButtonClicked(View view) {
-		String email = emailField.getText().toString();
-		String password = passwordField.getText().toString();
+		login();
+	}
+
+	public void login() {
+		final String email = emailField.getText().toString();
+		final String password = passwordField.getText().toString();
 
 		mAuth.signInWithEmailAndPassword(email, password)
-				.addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-					@Override
-					public void onComplete(@NonNull Task<AuthResult> task) {
-						if(task.isSuccessful()) {
-							//sign in success
-							Log.d("LOGIN", "signInWithEmail:success");
-							FirebaseUser user = mAuth.getCurrentUser();
-							Intent intent = new Intent(Login.this, MainActivity.class);
-//							intent.putExtra(EMAIL, user.getEmail());
-							startActivity(intent);
-						} else {
-							//sign in fail
-							Log.w("LOGIN", "signInWithEmail:fail", task.getException());
-							Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-						}
-					}
-				});
+			.addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+				@Override
+				public void onComplete(@NonNull Task<AuthResult> task) {
+					if(task.isSuccessful()) {
+						//sign in success
+						Log.d("LOGIN", "signInWithEmail:success");
 
-//		boolean ok = PasswordChecker.Check(username, password);
-//		if(ok) {
-//			CheckBox checkBox = findViewById(R.id.login_remember_CheckBox);
-//			SharedPreferences.Editor editor = preferences.edit();
-//			if(checkBox.isChecked()) {
-//				editor.putString(USERNAME, username);
-//				editor.putString(PASSWORD, password);
-//			} else {
-//				editor.remove(USERNAME);
-//				editor.remove(PASSWORD);
-//			}
-//			editor.apply();
-//			Intent intent = new Intent(this, MainActivity.class);
-//			intent.putExtra(USERNAME, username);
-//			startActivity(intent);
-//		} else {
-//			usernameField.setError("Wrong username or password.");
-//			TextView msgView = findViewById(R.id.login_message_TextView);
-//			msgView.setText("Username or password invalid.");
-//		}
+						CheckBox checkbox = findViewById(R.id.login_remember_Checkbox);
+						SharedPreferences.Editor editor = preferences.edit();
+						if(checkbox.isChecked()) {
+							editor.putString(EMAIL, email);
+							editor.putString(PASSWORD, password);
+						} else {
+							editor.remove(EMAIL);
+							editor.remove(PASSWORD);
+						}
+						editor.apply();
+
+						FirebaseUser user = mAuth.getCurrentUser();
+						Intent main = new Intent(Login.this, MainActivity.class);
+						startActivityForResult(main, 666);
+					} else {
+						//sign in fail
+						Log.w("LOGIN", "signInWithEmail:fail", task.getException());
+						Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+					}
+				}
+			});
 	}
 }
