@@ -5,8 +5,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -14,6 +18,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ReservationActivity extends AppCompatActivity {
+	private FirebaseUser user;
+	private TextView userEmailTextView;
+
 	private Reservation reservation;
 	private TextView roomIdView;
 	private TextView fromTimeView;
@@ -25,6 +32,10 @@ public class ReservationActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reservation);
+
+		user = FirebaseAuth.getInstance().getCurrentUser();
+		userEmailTextView = findViewById(R.id.user_email_TextView);
+		userEmailTextView.setText(user.getEmail());
 
 		Intent intent = getIntent();
 		reservation = (Reservation)intent.getSerializableExtra("RESERVATION");
@@ -46,6 +57,11 @@ public class ReservationActivity extends AppCompatActivity {
 
 		purposeView = findViewById(R.id.inspect_purpose_TextView);
 		purposeView.setText("Purpose: " + reservation.getPurpose());
+
+		if(user.getEmail().equals(reservation.getUserId())) {
+			View deleteButton = findViewById(R.id.inspect_delete_Button);
+			deleteButton.setVisibility(View.VISIBLE);
+		}
 	}
 
 	public void deleteReservation(View view) {
