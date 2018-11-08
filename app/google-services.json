@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "773796920456",
+    "firebase_url": "https://roomreservations-4ca94.firebaseio.com",
+    "project_id": "roomreservations-4ca94",
+    "storage_bucket": "roomreservations-4ca94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773796920456:android:6868bb8a1cb6a78e",
+        "android_client_info": {
+          "package_name": "com.example.sabreurn.roomreservations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773796920456-s3j7oh7vlgsa96nkalkl9cc15foh6nm0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sabreurn.roomreservations",
+            "certificate_hash": "e75b6d94143b58d9f4bae7f220efb19b6bee1340"
+          }
+        },
+        {
+          "client_id": "773796920456-jmq9pqg4g1k740mk3odpgtlvp7tdr6tq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCr7eRNKmD__M4N75_nquu6KOcEtFZZr4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773796920456-jmq9pqg4g1k740mk3odpgtlvp7tdr6tq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
