@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 		if(user == null) {
 			//just in case we somehow end up here without being authenticated
 			Intent login = new Intent(null, Login.class);
-			login.setFlags(login.getFlags() | login.FLAG_ACTIVITY_NO_HISTORY);
+			login.setFlags(login.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(login);
 		}
 		String email = user.getEmail();
