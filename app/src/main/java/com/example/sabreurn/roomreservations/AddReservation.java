@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,10 +33,11 @@ public class AddReservation extends AppCompatActivity {
 	public void addReservation(View view) {
 		String fromTimeString = ((EditText)findViewById(R.id.addReservation_fromTimeString_EditText)).getText().toString();
 		String toTimeString = ((EditText)findViewById(R.id.addReservation_toTimeString_EditText)).getText().toString();
-		String userId = ((EditText)findViewById(R.id.addReservation_userId_EditText)).getText().toString();
+//		String userId = ((EditText)findViewById(R.id.addReservation_userId_EditText)).getText().toString();
 		String purpose = ((EditText)findViewById(R.id.addReservation_purpose_EditText)).getText().toString();
 		String roomIdString = ((EditText)findViewById(R.id.addReservation_roomId_EditText)).getText().toString();
 		int roomId = Integer.parseInt(roomIdString);
+		FirebaseUser loggedinUser = FirebaseAuth.getInstance().getCurrentUser();
 
 		TextView msgView = findViewById(R.id.addReservation_message_TextView);
 
@@ -41,7 +45,7 @@ public class AddReservation extends AppCompatActivity {
 			JSONObject json = new JSONObject();
 			json.put("fromTimeString", fromTimeString);
 			json.put("toTimeString", toTimeString);
-			json.put("userId", userId);
+			json.put("userId", loggedinUser.getEmail());
 			json.put("purpose", purpose);
 			json.put("roomId", roomId);
 
