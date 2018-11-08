@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".AddReservation"
+>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Add reservation"
+	/>
+
+	<EditText
+		android:id="@+id/addReservation_fromTimeString_EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Reservation starting time"
+		android:inputType="text"
+	/>
+
+	<EditText
+		android:id="@+id/addReservation_toTimeString_EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Reservation ending time"
+		android:inputType="text"
+	/>
+
+	<EditText
+		android:id="@+id/addReservation_userId_EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="User ID"
+		android:inputType="text"
+	/>
+
+	<EditText
+		android:id="@+id/addReservation_purpose_EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Purpose of reservation"
+		android:inputType="text"
+	/>
+
+	<EditText
+		android:id="@+id/addReservation_roomId_EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Room ID"
+		android:inputType="number"
+	/>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="addReservation"
+		android:text="Add"
+	/>
+
+	<TextView
+		android:id="@+id/addReservation_message_TextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+
+</LinearLayout>
