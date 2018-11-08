@@ -14,31 +14,103 @@
 		android:text="Add reservation"
 	/>
 
-	<EditText
-		android:id="@+id/addReservation_fromTimeString_EditText"
+	<!-- from date and time -->
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="Reservation starting time"
-		android:inputType="text"
-	/>
+		android:orientation="horizontal"
+	>
+		<!-- from date -->
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		>
+			<Button
+				android:id="@+id/addReservation_fromDate_Button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="setDateFrom"
+				android:text="Set starting date"
+			/>
 
-	<EditText
-		android:id="@+id/addReservation_toTimeString_EditText"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="Reservation ending time"
-		android:inputType="text"
-	/>
+			<TextView
+				android:id="@+id/addReservation_fromDate_TextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/addReservation_fromDate_Button"
+			/>
+		</RelativeLayout>
 
-	<!--
-	<EditText
-		android:id="@+id/addReservation_userId_EditText"
+		<!-- from time -->
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		>
+			<Button
+				android:id="@+id/addReservation_fromTime_Button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="setTimeFrom"
+				android:text="Set starting time"
+			/>
+
+			<TextView
+				android:id="@+id/addReservation_fromTime_TextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/addReservation_fromTime_Button"
+			/>
+		</RelativeLayout>
+	</LinearLayout>
+
+	<!-- to date and time -->
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="User ID"
-		android:inputType="text"
-	/>
-	-->
+		android:orientation="horizontal"
+		>
+		<!-- to date -->
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			>
+			<Button
+				android:id="@+id/addReservation_toDate_Button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="setDateTo"
+				android:text="Set ending date"
+				/>
+
+			<TextView
+				android:id="@+id/addReservation_toDate_TextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/addReservation_toDate_Button"
+				/>
+		</RelativeLayout>
+
+		<!-- to time -->
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			>
+			<Button
+				android:id="@+id/addReservation_toTime_Button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="setTimeTo"
+				android:text="Set ending time"
+				/>
+
+			<TextView
+				android:id="@+id/addReservation_toTime_TextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/addReservation_toTime_Button"
+				/>
+		</RelativeLayout>
+	</LinearLayout>
 
 	<EditText
 		android:id="@+id/addReservation_purpose_EditText"
